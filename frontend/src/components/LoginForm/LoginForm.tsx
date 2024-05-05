@@ -1,13 +1,11 @@
 import {
   Button,
-  IconButton,
-  InputAdornment,
   InputLabel,
   OutlinedInput
 } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import { LoginFormTitleWrapper, LoginFormWrapper } from "./LoginForm.style";
-import { VisibilityOff } from "@mui/icons-material";
+import { PasswordInput } from "../Input";
 
 function LoginForm() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -31,27 +29,7 @@ function LoginForm() {
             label="Password"
           />
         </FormControl>
-        <FormControl sx={{ mb: 1 }} variant="outlined" required>
-          <InputLabel htmlFor="password">Password</InputLabel>
-
-          <OutlinedInput
-            id="password"
-            type={"password"}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={() => {}}
-                  onMouseDown={() => {}}
-                  edge="end"
-                >
-                  {<VisibilityOff />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-        </FormControl>
+        <PasswordInput />
         <div>Forgot password?</div>
         <Button
           type="submit"
