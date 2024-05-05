@@ -1,15 +1,27 @@
-import {
-  Button,
-  InputLabel,
-  OutlinedInput
-} from "@mui/material";
+import { Button, InputLabel, OutlinedInput } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import { LoginFormTitleWrapper, LoginFormWrapper } from "./LoginForm.style";
 import { PasswordInput } from "../Input";
+import { useState } from "react";
 
 function LoginForm() {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(email);
+    console.log(password);
+  };
+
+  const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    setPassword(e.target.value);
+  };
+
+  const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
+    setEmail(e.target.value);
   };
 
   return (
@@ -26,10 +38,11 @@ function LoginForm() {
           <OutlinedInput
             id="email"
             type="text"
-            label="Password"
+            label="Email"
+            onChange={handleChangeEmail}
           />
         </FormControl>
-        <PasswordInput />
+        <PasswordInput value={password} onChange={handleChangePassword} />
         <div>Forgot password?</div>
         <Button
           type="submit"

@@ -7,8 +7,9 @@ import {
   IconButton
 } from "@mui/material";
 import { useState } from "react";
+import { PasswordInputProps } from "./PasswordInput.type";
 
-function PasswordInput() {
+function PasswordInput({ value, onChange, ...props }: PasswordInputProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -18,12 +19,14 @@ function PasswordInput() {
       <OutlinedInput
         id="password"
         type={showPassword ? "text" : "password"}
+        defaultValue={value}
+        onChange={onChange}
+        {...props}
         endAdornment={
           <InputAdornment position="end">
             <IconButton
               aria-label="toggle password visibility"
               onClick={handleClickShowPassword}
-              onMouseDown={() => {}}
               edge="end"
             >
               {showPassword ? <VisibilityOff /> : <Visibility />}
