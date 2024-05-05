@@ -3,15 +3,19 @@ import FormControl from "@mui/material/FormControl";
 import { LoginFormTitleWrapper, LoginFormWrapper } from "./LoginForm.style";
 import { PasswordInput } from "../Input";
 import { useState } from "react";
+import { useInternalRouter } from "../../utuils/reactRouterHooks";
 
 function LoginForm() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   
+  const router = useInternalRouter()
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(email);
     console.log(password);
+    router.push('/home')
   };
 
   const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
