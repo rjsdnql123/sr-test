@@ -1,8 +1,11 @@
+import LeftImage from "../../components/IndexPageComponent/LeftImage/LeftImage";
+import { IndexPageContainer } from "./index.style";
+
 function IndexPage() {
   return (
-    <div>
-      <h1>Index Page</h1>
-    </div>
+    <IndexPageContainer>
+      <LeftImage />
+    </IndexPageContainer>
   );
 }
 
