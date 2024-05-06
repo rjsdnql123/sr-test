@@ -1,22 +1,16 @@
 import { Box, colors } from "@mui/material";
 import { IconListWraaper } from "./IconBoxWraaper.style";
-import { IModeList } from "../../../pages/home/index.type";
+import { IIconBoxWraaperProps } from "./IconBoxWraaper.type";
 
-interface IIconBoxWraaperProps {
-  title: string;
-  list: IModeList[];
-  onIconClick?: (e: unknown) => void;
-}
-
-function IconBoxWraaper({ title, list }: IIconBoxWraaperProps) {
-
+function IconBoxWraaper({ title, list, onIconClick }: IIconBoxWraaperProps) {
   return (
     <Box>
       <div>{title}</div>
       <IconListWraaper>
         {list.map((item) => (
           <Box
-          key={item.name}
+            onClick={() => onIconClick && onIconClick(item)}
+            key={item.name}
             sx={{
               display: "flex",
               justifyContent: "center",

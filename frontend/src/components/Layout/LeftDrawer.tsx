@@ -49,7 +49,6 @@ interface AppBarProps extends MuiAppBarProps {
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open"
 })<AppBarProps>(({ theme, open }) => ({
-  backgroundColor: "white",
   boxShadow: "none",
   borderBottom: "1px dashed rgba(0, 0, 0, 0.12)",
   transition: theme.transitions.create(["margin", "width"], {
@@ -97,10 +96,10 @@ function LeftDrawer({ leftList, children }: LeftDrawerProps) {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
+            color="primary"
             sx={{
               mr: 2,
               ...(open && { display: "none" }),
-              color: colors.green[500]
             }}
           >
             <MenuIcon />
