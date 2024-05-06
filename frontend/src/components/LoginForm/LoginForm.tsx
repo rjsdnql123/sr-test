@@ -1,14 +1,7 @@
-import {
-  Box,
-  Button,
-  InputLabel,
-  OutlinedInput,
-  Typography,
-  colors
-} from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import { LoginFormTitleWrapper, LoginFormWrapper } from "./LoginForm.style";
-import { PasswordInput } from "../Input";
+import { CommonInput, PasswordInput } from "../Input";
 import { useState } from "react";
 import { useInternalRouter } from "../../utuils/reactRouterHooks";
 import { LoginApiHook } from "../../shared/api/loginAPI";
@@ -64,16 +57,19 @@ function LoginForm() {
         </div>
       </LoginFormTitleWrapper>
       <FormControl component="form" onSubmit={handleSubmit}>
-        <FormControl sx={{ mb: 1 }} variant="outlined" required>
-          <InputLabel htmlFor="email">Email address</InputLabel>
-          <OutlinedInput
-            id="email"
-            type="text"
-            label="Email"
-            onChange={handleChangeEmail}
-          />
-        </FormControl>
-        <PasswordInput value={password} onChange={handleChangePassword} />
+        <CommonInput
+          label="Email address"
+          id="email"
+          type="text"
+          onChange={handleChangeEmail}
+          value={email}
+        />
+        <PasswordInput
+          value={password}
+          id="password"
+          label="Password"
+          onChange={handleChangePassword}
+        />
         <Typography
           textAlign="right"
           sx={{
