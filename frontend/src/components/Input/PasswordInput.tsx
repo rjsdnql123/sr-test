@@ -9,15 +9,15 @@ import {
 import { useState } from "react";
 import { PasswordInputProps } from "./PasswordInput.type";
 
-function PasswordInput({ value, onChange, ...props }: PasswordInputProps) {
+function PasswordInput({ value, id, label, onChange, ...props }: PasswordInputProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   return (
     <FormControl sx={{ mb: 1 }} variant="outlined" required>
-      <InputLabel htmlFor="password">Password</InputLabel>
+      {label && <InputLabel htmlFor={id}>Password</InputLabel>}
       <OutlinedInput
-        id="password"
+        id={id}
         type={showPassword ? "text" : "password"}
         defaultValue={value}
         onChange={onChange}
@@ -33,7 +33,7 @@ function PasswordInput({ value, onChange, ...props }: PasswordInputProps) {
             </IconButton>
           </InputAdornment>
         }
-        label="Password"
+        label={label}
       />
     </FormControl>
   );
