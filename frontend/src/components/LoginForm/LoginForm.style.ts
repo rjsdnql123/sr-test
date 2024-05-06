@@ -12,4 +12,7 @@ export const LoginFormWrapper = styled.div`
 
 export const LoginFormTitleWrapper = styled.div`
   margin-bottom: 50px;
-`
+  > div{
+    display: flex;
+  }
+`;
