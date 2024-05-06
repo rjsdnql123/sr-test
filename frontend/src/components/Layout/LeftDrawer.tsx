@@ -75,7 +75,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 function LeftDrawer({ leftList, children }: LeftDrawerProps) {
   const { pathname } = useGetLocation();
-  const { push } = useInternalRouter()
+  const { push } = useInternalRouter();
 
   const theme = useTheme();
   const [open, setOpen] = useState(true);
@@ -96,10 +96,9 @@ function LeftDrawer({ leftList, children }: LeftDrawerProps) {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            color="primary"
             sx={{
               mr: 2,
-              ...(open && { display: "none" }),
+              ...(open && { display: "none" })
             }}
           >
             <MenuIcon />
@@ -134,11 +133,11 @@ function LeftDrawer({ leftList, children }: LeftDrawerProps) {
           {leftList.map((leftItem) => (
             <ListItem key={leftItem.name} disablePadding>
               <ListItemButton
+              color="primary"
                 onClick={() => push(leftItem.router)}
                 sx={{
-                  backgroundColor: leftItem.router === pathname
-                    ? colors.green[50]
-                    : null
+                  backgroundColor:
+                    leftItem.router === pathname ? colors.green[200] : null
                 }}
               >
                 <ListItemIcon>
@@ -150,10 +149,13 @@ function LeftDrawer({ leftList, children }: LeftDrawerProps) {
           ))}
         </List>
       </Drawer>
-      <Main open={open} sx={{
-        minHeight: "100vh",
-        padding: theme.spacing(10)
-      }}>
+      <Main
+        open={open}
+        sx={{
+          minHeight: "100vh",
+          padding: theme.spacing(10)
+        }}
+      >
         <DrawerHeader />
         {children}
       </Main>

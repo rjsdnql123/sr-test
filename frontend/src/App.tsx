@@ -5,15 +5,6 @@ import { colors } from "@mui/material";
 import { useMemo } from "react";
 import { useDarkModeStore } from "./store/darkModeStore";
 
-// const darkTheme = createTheme({
-//   palette: {
-//     mode: "dark",
-//     primary: {
-//       main: colors.green[200]
-//     }
-//   }
-// });
-
 function App() {
   const { darkMode } = useDarkModeStore();
 
@@ -23,7 +14,7 @@ function App() {
         palette: {
           mode: darkMode ? "dark" : "light",
           primary: {
-            main: colors.green[200]
+            main: colors.green[200],
           }
         }
       }),
