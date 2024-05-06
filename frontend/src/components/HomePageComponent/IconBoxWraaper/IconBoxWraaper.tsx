@@ -3,6 +3,7 @@ import { IconListWraaper } from "./IconBoxWraaper.style";
 import { IIconBoxWraaperProps } from "./IconBoxWraaper.type";
 
 function IconBoxWraaper({ title, list, onIconClick }: IIconBoxWraaperProps) {
+
   return (
     <Box>
       <div>{title}</div>

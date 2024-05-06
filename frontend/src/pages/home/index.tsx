@@ -10,12 +10,12 @@ import { ILeftDrawerList, IModeList } from "./index.type";
 import { useDarkModeStore } from "../../store/darkModeStore";
 
 function HomePage() {
-
-  const { setDarkMode } = useDarkModeStore();
-  const asfasf = (item: IModeList) => {
-    setDarkMode(item.name === 'dark' ? true : false)
-  }
+  const { darkMode, setDarkMode } = useDarkModeStore();
   
+  const onClickDardMode = (item: IModeList) => {
+    setDarkMode(item.name === "dark" ? true : false);
+  };
+
   const LeftDrawerList: ILeftDrawerList[] = [
     { router: "/home", name: "Users", icon: GroupIcon },
     { router: "/home/product", name: "Product", icon: ShoppingBagIcon },
@@ -23,19 +23,22 @@ function HomePage() {
   ];
 
   const modeList: IModeList[] = [
-    { name: "light", icon: WbSunnyIcon, status: true },
-    { name: "dark", icon: NightsStayIcon, status: false }
+    { name: "light", icon: WbSunnyIcon, status: !darkMode },
+    { name: "dark", icon: NightsStayIcon, status: darkMode }
   ];
 
   const notMode: IModeList[] = [
-    { name: "light", icon: ContrastTwoToneIcon, status: false },
-    { name: "dark", icon: ContrastTwoToneIcon, status: false }
+    { name: "light", icon: ContrastTwoToneIcon, status: !darkMode },
+    { name: "dark", icon: ContrastTwoToneIcon, status: darkMode }
   ];
-  
 
   return (
     <LeftDrawer leftList={LeftDrawerList}>
-      <IconBoxWraaper list={modeList} title="Mode" onIconClick={asfasf} />
+      <IconBoxWraaper
+        list={modeList}
+        title="Mode"
+        onIconClick={onClickDardMode}
+      />
       <IconBoxWraaper list={notMode} title="Mode" />
     </LeftDrawer>
   );
