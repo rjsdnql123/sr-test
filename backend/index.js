@@ -23,6 +23,25 @@ app.get("/", (req, res) => {
   res.status(200).send({ message: "server 정상 실행." });
 });
 
+app.post("/register", (req, res) => {
+  const { email, password } = req.body;
+
+  const existingUser = users.find((user) => user.email === email);
+
+  if (existingUser) {
+    return res.status(400).send({ message: "이미 등록된 이메일입니다." });
+  }
+
+  const hashedPassword = bcrypt.hashSync(password, 8);
+
+  const id = users.length + 1;
+
+  const newUser = { id, email, password: hashedPassword };
+  users.push(newUser);
+
+  res.status(200).send({ message: "회원가입이 완료되었습니다." });
+});
+
 app.post("/login", (req, res) => {
   console.log(req.body, "req.body");
   const user = users.find((user) => user.email === req.body.email);

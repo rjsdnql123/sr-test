@@ -8,9 +8,12 @@ const LoginApiHook = (() => {
         password: password,
       });
     },
-    // signup: () => {
-    //   return silcroadsoftAPI.post('/signup');
-    // },
+    register: (email:string, password:string) => {
+      return silcroadsoftAPI.post('/register', {
+        email: email,
+        password: password,
+      });
+    },
   };
 })();
 

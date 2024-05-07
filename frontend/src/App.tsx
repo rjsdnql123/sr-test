@@ -13,9 +13,13 @@ function App() {
       createTheme({
         palette: {
           mode: darkMode ? "dark" : "light",
-          primary: {
-            main: colors.green[200],
-          }
+          ...(!darkMode
+            ? {
+                primary: { main: colors.green[200] }
+              }
+            : {
+                primary: { main: colors.green[300] }
+              })
         }
       }),
     [darkMode]

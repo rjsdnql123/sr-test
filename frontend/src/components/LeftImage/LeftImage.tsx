@@ -1,5 +1,5 @@
 import { LeftImageWrapper, MainImage } from './LeftImage.style';
-import image from '../../../assets/mainImage.png'
+import image from '../../assets/mainImage.png'
 
 
 function LeftImage() {

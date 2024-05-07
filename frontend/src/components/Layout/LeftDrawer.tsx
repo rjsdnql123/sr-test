@@ -13,7 +13,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { colors } from "@mui/material";
 import {
   useGetLocation,
   useInternalRouter
@@ -90,8 +89,8 @@ function LeftDrawer({ leftList, children }: LeftDrawerProps) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
+      <AppBar position="fixed" open={open} >
+        <Toolbar >
           <IconButton
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -118,7 +117,10 @@ function LeftDrawer({ leftList, children }: LeftDrawerProps) {
         anchor="left"
         open={open}
       >
-        <DrawerHeader>
+        <DrawerHeader 
+        color="primary"
+        sx={{
+        }}>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
@@ -137,7 +139,7 @@ function LeftDrawer({ leftList, children }: LeftDrawerProps) {
                 onClick={() => push(leftItem.router)}
                 sx={{
                   backgroundColor:
-                    leftItem.router === pathname ? colors.green[200] : null
+                    leftItem.router === pathname ? 'primary.main' : null
                 }}
               >
                 <ListItemIcon>

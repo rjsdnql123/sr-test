@@ -2,7 +2,7 @@ import LeftDrawer from "../../components/Layout/LeftDrawer";
 import GroupIcon from "@mui/icons-material/Group";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
-import IconBoxWraaper from "../../components/HomePageComponent/IconBoxWraaper/IconBoxWraaper";
+import IconBoxWraaper from "../../components/IconBoxWraaper/IconBoxWraaper";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import NightsStayIcon from "@mui/icons-material/NightsStay";
 import ContrastTwoToneIcon from "@mui/icons-material/ContrastTwoTone";

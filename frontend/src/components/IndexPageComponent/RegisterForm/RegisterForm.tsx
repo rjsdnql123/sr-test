@@ -1,27 +1,25 @@
 import { Button, Typography } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
-import { LoginFormTitleWrapper, LoginFormWrapper } from "./LoginForm.style";
-import { CommonInput, PasswordInput } from "../Input";
+import { CommonInput, PasswordInput } from "../../Input";
 import { useState } from "react";
-import { useInternalRouter } from "../../utuils/reactRouterHooks";
-import { LoginApiHook } from "../../shared/api/loginAPI";
+import { useInternalRouter } from "../../../utuils/reactRouterHooks";
+import { LoginApiHook } from "../../../shared/api/loginAPI";
+import { LoginFormWrapper, LoginFormTitleWrapper } from "../LoginForm/LoginForm.style";
+import { IndexPageComponentProps } from "../IndexPageComponent.type";
 
-function LoginForm() {
+function RegisterForm({onClickChangeSignStatus}:IndexPageComponentProps) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
-  const router = useInternalRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const token = await LoginApiHook.login(email, password);
-      alert("로그인 성공");
-      localStorage.setItem("token", token.data.token);
-      router.push("/home");
+      await LoginApiHook.register(email, password);
+      alert("회원가입 성공! 로그인 해주시길 바랍니다.");
+      onClickChangeSignStatus(true)
     } catch (e) {
       console.log(e);
-      alert("로그인 실패");
+      alert("회원가입 실패");
     }
   };
 
@@ -34,16 +32,14 @@ function LoginForm() {
   };
 
   const handleClickCreateAccount = () => {
-    alert("회원가입 페이지로 이동");
-    router.push("/register");
+    onClickChangeSignStatus(true)
   };
 
   return (
     <LoginFormWrapper>
       <LoginFormTitleWrapper>
-        <h1>Sign In</h1>
+        <h1>Register</h1>
         <div>
-          New user?
           <Typography
             color="primary"
             sx={{
@@ -52,7 +48,7 @@ function LoginForm() {
             }}
             onClick={handleClickCreateAccount}
           >
-            Create an account
+            Go SignIn
           </Typography>
         </div>
       </LoginFormTitleWrapper>
@@ -70,15 +66,6 @@ function LoginForm() {
           label="Password"
           onChange={handleChangePassword}
         />
-        <Typography
-          textAlign="right"
-          sx={{
-            textDecoration: "underline",
-            cursor: "pointer"
-          }}
-        >
-          Forgot password?
-        </Typography>
         <Button
           type="submit"
           fullWidth
@@ -86,11 +73,11 @@ function LoginForm() {
           color="primary"
           sx={{ mt: 3, mb: 2 }}
         >
-          로그인
+          회원가입
         </Button>
       </FormControl>
     </LoginFormWrapper>
   );
 }
 
-export default LoginForm;
+export default RegisterForm;
